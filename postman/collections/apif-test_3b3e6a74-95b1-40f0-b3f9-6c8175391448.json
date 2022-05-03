@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "0af50f4a-d98a-4e0e-b656-a4ecd2eed2ad",
+		"name": "apif-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sample endpoint: Returns details about a particular user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77a2792b-8cb2-45f5-9793-5cf499c3e1de",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"ID exists\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.exist;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "29ec3e8a-26ea-49ae-9d81-75d29fddd18c",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user?id=-47909265",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "-47909265",
+							"description": "(Required) ID of the user"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "6acc9dab-a454-4dbd-a646-1d07432f1871",
+					"name": "Sample response: Details about a user by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user?id=-47909265",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "-47909265"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"disabled": false,
+							"description": "A link to the next page of responses",
+							"key": "x-next",
+							"value": "do amet officia eiusmod dolore"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"id\": 32053738,\n  \"name\": \"cupidatat labore dolor\",\n  \"tag\": \"officia dolore adipisicing pariatur proident\"\n}"
+				},
+				{
+					"id": "bd615f10-b3c2-44a2-b5c3-070a074a3661",
+					"name": "Unexpected error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user?id=-47909265",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "-47909265"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"code\": 37103570,\n  \"message\": \"laborum tempor irure quis\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "<Basic Auth Username>",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "<Basic Auth Password>",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d4bdf17e-eaf2-4aac-9b16-a72a27329b7a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "50ce2a89-b846-41be-a7d4-04f9b08a2565",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "02278015-9fba-4475-9256-a0066dd30a5b",
+			"key": "baseUrl",
+			"value": "https://52e8aa24-d37e-477f-8ec3-8bf525c919e2.mock.pstmn.io",
+			"type": "string"
+		}
+	]
+}
